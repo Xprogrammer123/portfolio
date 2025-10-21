@@ -32,29 +32,67 @@ export default function Home() {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
-
+  const navWhatsapp = () => {
+    const phoneNumber = "2349139893178";
+    const message = encodeURIComponent("Hello! I’d like to know more about your services.");
+  
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  };
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-        <div className="flex flex-col gap-4">
-          {["intro", "work", "thoughts", "connect"].map((section) => (
-            <button
-              key={section}
-              onClick={() =>
-                document
-                  .getElementById(section)
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className={`w-2 h-8 rounded-full transition-all duration-500 ${
-                activeSection === section
-                  ? "bg-foreground"
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-              }`}
-              aria-label={`Navigate to ${section}`}
-            />
-          ))}
-        </div>
+     <nav
+        className="
+          fixed z-10
+          hidden lg:flex
+          left-8 top-1/2 -translate-y-1/2
+          flex-col gap-4
+        "
+      >
+        {["intro", "work", "projects", "thoughts", "connect"].map((section) => (
+          <button
+            key={section}
+            onClick={() =>
+              document
+                .getElementById(section)
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className={`w-2 h-8 rounded-full transition-all duration-500 ${
+              activeSection === section
+                ? "bg-foreground"
+                : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+            }`}
+            aria-label={`Navigate to ${section}`}
+          />
+        ))}
       </nav>
+
+
+      <nav
+        className="
+          fixed bottom-5 left-0 right-0 z-10
+          flex justify-center gap-4 py-3
+          bg-background/70 backdrop-blur-md
+          lg:hidden
+        "
+      >
+        {["intro", "work", "projects", "thoughts", "connect"].map((section) => (
+          <button
+            key={section}
+            onClick={() =>
+              document
+                .getElementById(section)
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className={`w-8 h-2 rounded-full transition-all duration-500 ${
+              activeSection === section
+                ? "bg-foreground"
+                : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+            }`}
+            aria-label={`Navigate to ${section}`}
+          />
+        ))}
+      </nav>
+
 
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
@@ -69,9 +107,8 @@ export default function Home() {
                   PORTFOLIO / 2025
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Felix
-                  <br />
-                  <span className="text-muted-foreground">Macaspac</span>
+                  Fawas <span className="text-muted-foreground">Saka</span>
+                  <br/>
                 </h1>
               </div>
 
@@ -89,7 +126,7 @@ export default function Home() {
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     Available for work
                   </div>
-                  <div>Philippines</div>
+                  <div>Nigeria</div>
                 </div>
               </div>
             </div>
@@ -100,10 +137,10 @@ export default function Home() {
                   CURRENTLY
                 </div>
                 <div className="space-y-2">
-                  <div className="text-foreground">Fullstack Developer</div>
-                  <div className="text-muted-foreground">@ Hububble</div>
+                  <div className="text-foreground">Frontend Developer</div>
+                  <div className="text-muted-foreground">@PhantomBuildHQ</div>
                   <div className="text-xs text-muted-foreground">
-                    2021 — Present
+                    2025 — Present
                   </div>
                 </div>
               </div>
@@ -114,11 +151,11 @@ export default function Home() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "HubL",
-                    "React",
+                    "Next js",
+                    "React js",
                     "TypeScript",
-                    "HubSpot CMS",
-                    "Node.js",
+                    "Supabase",
+                    "Javascript",
                   ].map((skill) => (
                     <span
                       key={skill}
@@ -142,43 +179,43 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <h2 className="text-3xl sm:text-4xl font-light">Selected Work</h2>
               <div className="text-sm text-muted-foreground font-mono">
-                2019 — 2025
+                2024 — 2025
               </div>
             </div>
 
             <div className="space-y-8 sm:space-y-12">
               {[
                 {
-                  year: "2023",
+                  year: "2024",
                   role: "Senior Frontend Engineer",
-                  company: "Vercel",
+                  company: "New Techies",
                   description:
-                    "Leading frontend architecture for developer tools and AI-powered features.",
-                  tech: ["React", "TypeScript", "Next.js"],
+                    "Leading frontend architecture for clients website and ensuring seamless user experience",
+                  tech: ["React", "javascript"],
                 },
                 {
-                  year: "2022",
+                  year: "2025",
                   role: "Frontend Engineer",
-                  company: "Linear",
+                  company: "Eduflow",
                   description:
-                    "Built performant interfaces for project management and team collaboration.",
-                  tech: ["React", "GraphQL", "Framer Motion"],
+                    "Building and optimizing high performing pages while maintianing pure and seamless connections to the Backend",
+                  tech: ["Next js", "TypeScript", "RestAPI"],
                 },
                 {
-                  year: "2021",
-                  role: "Full Stack Developer",
-                  company: "Stripe",
+                  year: "2024",
+                  role: "Frontend Developer",
+                  company: "Freshtech innovations",
                   description:
-                    "Developed payment infrastructure and merchant-facing dashboard features.",
-                  tech: ["Ruby", "React", "PostgreSQL"],
+                    "Built and optimized a responsive high performing website ensuring a seamless user interface ",
+                  tech: ["React", "TypeScript"],
                 },
                 {
-                  year: "2019",
+                  year: "2025",
                   role: "Software Engineer",
-                  company: "Airbnb",
+                  company: "PhantomBuildHQ",
                   description:
-                    "Created booking flow optimizations and host management tools.",
-                  tech: ["React", "Node.js", "MySQL"],
+                    "Building and optimizing high performing products while maintiaing pure and seamless connections to the Backend",
+                  tech: ["Next js ", "TypeScript", "RestAPI"],
                 },
               ].map((job, index) => (
                 <div
@@ -220,8 +257,99 @@ export default function Home() {
         </section>
 
         <section
-          id="thoughts"
+          id="projects"
           ref={(el) => (sectionsRef.current[2] = el)}
+          className="min-h-screen py-20 sm:py-32 opacity-0"
+        >
+          <div className="space-y-12 sm:space-y-16">
+            <h2 className="text-3xl sm:text-4xl font-light">Recent Projects</h2>
+
+            <div className="grid gap-8 sm:gap-10 lg:grid-cols-2">
+              {[
+                {
+                  title: "Portfolio Website",
+                  description:
+                    "A sleek, modern personal portfolio built with Next.js and Tailwind CSS showcasing my work and skills.",
+                  tech: ["Next.js", "TypeScript", "Framer Motion"],
+                  link: "https://yourportfolio.vercel.app",
+                  date: "2025",
+                },
+                {
+                  title: "E-Commerce Dashboard",
+                  description:
+                    "A responsive admin dashboard for managing products, orders, and analytics with real-time data visualization.",
+                  tech: ["React", "Recharts", "Firebase"],
+                  link: "https://yourdashboard.vercel.app",
+                  date: "2025",
+                },
+                {
+                  title: "Electricity Payment App",
+                  description:
+                    "A full-featured electricity billing app with recent transactions, provider selection, and secure PIN verification modals.",
+                  tech: ["React", "Tailwind CSS", "LocalStorage"],
+                  link: "https://buyelectricity.vercel.app",
+                  date: "2024",
+                },
+                {
+                  title: "Game Carousel UI",
+                  description:
+                    "An interactive image carousel displaying games, with smooth transitions and responsive design.",
+                  tech: ["React", "Tailwind CSS"],
+                  link: "https://gamecarousel.vercel.app",
+                  date: "2024",
+                },
+              ].map((project, index) => (
+                <article
+                  key={index}
+                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
+                      <span>{project.date}</span>
+                      <span>{project.tech.join(" • ")}</span>
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <span>View project</span>
+                        <svg
+                          className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="thoughts"
+          ref={(el) => (sectionsRef.current[3] = el)}
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
@@ -237,25 +365,25 @@ export default function Home() {
                   readTime: "5 min",
                 },
                 {
-                  title: "Design Systems at Scale",
+                  title: "My Fallbacks in Tech space as a developer",
                   excerpt:
-                    "Lessons learned from building and maintaining design systems across multiple products.",
+                    "Lessons learned & Mistakes made from my past experiencesas as a developer, poipointing and making amends to be the best version of me",
                   date: "Nov 2024",
-                  readTime: "8 min",
+                  readTime: "3 min",
                 },
                 {
                   title: "Performance-First Development",
                   excerpt:
                     "Why performance should be a first-class citizen in your development workflow.",
                   date: "Oct 2024",
-                  readTime: "6 min",
+                  readTime: "4 min",
                 },
                 {
                   title: "The Art of Code Review",
                   excerpt:
                     "Building better software through thoughtful and constructive code reviews.",
                   date: "Sep 2024",
-                  readTime: "4 min",
+                  readTime: "2 min",
                 },
               ].map((post, index) => (
                 <article
@@ -301,7 +429,7 @@ export default function Home() {
 
         <section
           id="connect"
-          ref={(el) => (sectionsRef.current[3] = el)}
+          ref={(el) => (sectionsRef.current[4] = el)}
           className="py-20 sm:py-32 opacity-0"
         >
           <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
@@ -316,11 +444,11 @@ export default function Home() {
 
                 <div className="space-y-4">
                   <Link
-                    href="mailto:test@example.com"
+                    href="mailto:fawassaka862@gmail.com"
                     className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
                   >
                     <span className="text-base sm:text-lg">
-                      test@example.com
+                      fawassaka862@gmail.com
                     </span>
                     <svg
                       className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -347,14 +475,26 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: "GitHub", handle: "@felixmacaspac", url: "#" },
-                  { name: "v0.dev", handle: "@felixmacaspac", url: "#" },
                   {
-                    name: "HubSpot Community",
-                    handle: "@felixmacaspac",
-                    url: "#",
+                    name: "GitHub",
+                    handle: "Xprogrammer123",
+                    url: "https://github.com/Xprogrammer123",
                   },
-                  { name: "LinkedIn", handle: "felixmacaspac", url: "#" },
+                  {
+                    name: "Twitter(X)",
+                    handle: "@Sudo_Programmer",
+                    url: "https://x.com/Sudo_Programmer",
+                  },
+                  {
+                    name: "Daily.dev",
+                    handle: "@xprogrammer",
+                    url: "https://daily.dev/xprogrammer",
+                  },
+                  {
+                    name: "LinkedIn",
+                    handle: "Fawas (Ade) Saka",
+                    url: "https://linkedin.com/in/fawas-saka",
+                  },
                 ].map((social) => (
                   <Link
                     key={social.name}
@@ -380,10 +520,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="text-sm text-muted-foreground">
-                © 2025 Felix Macaspac. All rights reserved.
-              </div>
-              <div className="text-xs text-muted-foreground">
-                Built with v0.dev by Felix Macaspac
+                © 2025 Xprogrammer. All rights reserved.
               </div>
             </div>
 
@@ -416,7 +553,10 @@ export default function Home() {
                 )}
               </button>
 
-              <button className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300">
+              <button 
+              className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
+              onClick={navWhatsapp}
+              >
                 <svg
                   className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
                   fill="none"
