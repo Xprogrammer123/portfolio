@@ -34,13 +34,15 @@ export default function Home() {
   };
   const navWhatsapp = () => {
     const phoneNumber = "2349139893178";
-    const message = encodeURIComponent("Hello! I’d like to know more about your services.");
-  
+    const message = encodeURIComponent(
+      "Hello! I’d like to know more about your services."
+    );
+
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-     <nav
+      <nav
         className="
           fixed z-10
           hidden lg:flex
@@ -65,7 +67,6 @@ export default function Home() {
           />
         ))}
       </nav>
-
 
       <nav
         className="
@@ -93,7 +94,6 @@ export default function Home() {
         ))}
       </nav>
 
-
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
           id="intro"
@@ -108,7 +108,7 @@ export default function Home() {
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
                   Fawas <span className="text-muted-foreground">Saka</span>
-                  <br/>
+                  <br />
                 </h1>
               </div>
 
@@ -553,9 +553,9 @@ export default function Home() {
                 )}
               </button>
 
-              <button 
-              className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
-              onClick={navWhatsapp}
+              <button
+                className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
+                onClick={navWhatsapp}
               >
                 <svg
                   className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"

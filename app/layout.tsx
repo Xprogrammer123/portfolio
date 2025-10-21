@@ -11,8 +11,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Felix Macaspac - Full Stack Developer",
-  description: "Full stack developer with 5 years of experience.",
+  title: "Fawas Saka - Software Developer",
+  description: "Hey God, it's me again ",
 };
 
 export default function RootLayout({
