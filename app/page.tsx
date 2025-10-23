@@ -33,7 +33,7 @@ export default function Home() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
   const navWhatsapp = () => {
-    const phoneNumber = "2349139893178";
+    const phoneNumber = "2349138983178";
     const message = encodeURIComponent(
       "Hello! I’d like to know more about your services."
     );
