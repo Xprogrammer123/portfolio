@@ -267,36 +267,52 @@ export default function Home() {
             <div className="grid gap-8 sm:gap-10 lg:grid-cols-2">
               {[
                 {
-                  title: "Portfolio Website",
+                  title: "Meet dev",
                   description:
-                    "A sleek, modern personal portfolio built with Next.js and Tailwind CSS showcasing my work and skills.",
-                  tech: ["Next.js", "TypeScript", "Framer Motion"],
-                  link: "https://yourportfolio.vercel.app",
+                    "A sleek, modern Landing page for devs sharing components and collaboration",
+                  tech: ["Next.js", "Magic UI", "Framer Motion"],
+                  link: "https://meet-dev-rho.vercel.app",
                   date: "2025",
                 },
                 {
-                  title: "E-Commerce Dashboard",
+                  title: "Luxury Vintage Store",
                   description:
-                    "A responsive admin dashboard for managing products, orders, and analytics with real-time data visualization.",
-                  tech: ["React", "Recharts", "Firebase"],
-                  link: "https://yourdashboard.vercel.app",
+                    "A responsive admin dashboard for managing products, orders, and apayment with real-time data visualization.",
+                  tech: ["React", "Stripe", "Supabase"],
+                  link: "https://luxury-vintage-store.vercel.app",
                   date: "2025",
                 },
                 {
-                  title: "Electricity Payment App",
+                  title: "Leadforge ai",
                   description:
-                    "A full-featured electricity billing app with recent transactions, provider selection, and secure PIN verification modals.",
-                  tech: ["React", "Tailwind CSS", "LocalStorage"],
-                  link: "https://buyelectricity.vercel.app",
-                  date: "2024",
+                    "A full-featured saas marketing tool, meetings booking , real time lead fecthing with over 55% success rate",
+                  tech: ["React", "Apollo api", "Supabase", "Cal.com"],
+                  link: "https://leadforge-ai.vercel.app",
+                  date: "2025",
                 },
                 {
-                  title: "Game Carousel UI",
+                  title: "Freshtech innovation",
                   description:
-                    "An interactive image carousel displaying games, with smooth transitions and responsive design.",
+                    "A Landing page for an organisation , fully responsive and interactive",
                   tech: ["React", "Tailwind CSS"],
-                  link: "https://gamecarousel.vercel.app",
-                  date: "2024",
+                  link: "https://freshtech-innovation.vercel.app",
+                  date: "2025",
+                },
+                {
+                  title: "Trace it together",
+                  description:
+                    "A admin personal parcel tracker , admin functionality & a fully functional tracking feature",
+                  tech: ["React", "Apollo api", "Supabase", "Cal.com"],
+                  link: "https://trace-it-together.vercel.app",
+                  date: "2025",
+                },
+                {
+                  title: "Kaleido",
+                  description:
+                    "A Landing page for an organisation , fully responsive and interactive",
+                  tech: ["React", "Tailwind CSS"],
+                  link: "https://freshtech-innovation.vercel.app",
+                  date: "2025",
                 },
               ].map((project, index) => (
                 <article
