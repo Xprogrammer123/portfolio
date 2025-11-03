@@ -277,7 +277,7 @@ export default function Home() {
                 {
                   title: "Luxury Vintage Store",
                   description:
-                    "A responsive admin dashboard for managing products, orders, and apayment with real-time data visualization.",
+                    "A responsive ecommerce website with a full fledges admin dashboard for managing products, orders, and apayment with real-time data visualization.",
                   tech: ["React", "Stripe", "Supabase"],
                   link: "https://luxury-vintage-store.vercel.app",
                   date: "2025",
@@ -309,10 +309,18 @@ export default function Home() {
                 {
                   title: "Kaleido",
                   description:
-                    "A Landing page for an organisation , fully responsive and interactive",
-                  tech: ["React", "Tailwind CSS"],
-                  link: "https://freshtech-innovation.vercel.app",
-                  date: "2025",
+                    "A Landing page for a children web based learning website , waitlist page and interactive section features",
+                  tech: ["React", "Tailwind CSS" ,"framer motion"],
+                  link: "https://kaleido-landing-waitlist.vercel.app",
+                  date: "2024",
+                },
+                {
+                  title: "Doyin Unique Stores",
+                  description:
+                    "A responsive ecommerce website with a full fledges admin dashboard for managing products, orders, and apayment with real-time data visualization.",
+                  tech: ["React", "Tailwind CSS" ,"firebase"],
+                  link: "https://doyin-unique-store.vercel.app",
+                  date: "2024",
                 },
               ].map((project, index) => (
                 <article
