@@ -262,8 +262,10 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
+             <div className="flex items-center gap-2">
             <h2 className="text-3xl sm:text-4xl font-light">Recent Projects</h2>
-
+             <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+</div>
             <div className="grid gap-8 sm:gap-10 lg:grid-cols-2">
               {[
                 {
