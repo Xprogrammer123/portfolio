@@ -259,7 +259,7 @@ export default function Home() {
         <section
           id="projects"
           ref={(el) => (sectionsRef.current[2] = el)}
-          className="min-h-screen py-20 sm:py-32 opacity-0"
+          className="min-h-screen py-20 sm:py-32 "
         >
           <div className="space-y-12 sm:space-y-16">
              <div className="flex items-center gap-2">
