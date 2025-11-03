@@ -286,7 +286,7 @@ export default function Home() {
                   title: "Leadforge ai",
                   description:
                     "A full-featured saas marketing tool, meetings booking , real time lead fecthing with over 55% success rate",
-                  tech: ["React", "Apollo api", "Supabase", "Cal.com"],
+                  tech: ["React", "Apollo api", "Supabase", "Cal.com","resend"],
                   link: "https://leadforge-ai.vercel.app",
                   date: "2025",
                 },
@@ -302,7 +302,7 @@ export default function Home() {
                   title: "Trace it together",
                   description:
                     "A admin personal parcel tracker , admin functionality & a fully functional tracking feature",
-                  tech: ["React", "Apollo api", "Supabase", "Cal.com"],
+                  tech: ["React", "Supabase", "Tailwindcss"],
                   link: "https://trace-it-together.vercel.app",
                   date: "2025",
                 },
