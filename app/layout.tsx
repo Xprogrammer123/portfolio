@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next"
 
 const geist = Geist({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
           enableSystem={false}
         >
           {children}
+            <Analytics />
         </ThemeProvider>
       </body>
     </html>
