@@ -14,6 +14,9 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Fawas Saka - Software Developer",
   description: "Hey God, it's me again ",
+    icons: {
+    icon: "/portfolio.gif", 
+  },
 };
 
 export default function RootLayout({
