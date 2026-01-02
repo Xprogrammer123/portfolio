@@ -35,7 +35,7 @@ export default function Home() {
   const navWhatsapp = () => {
     const phoneNumber = "2349138983178";
     const message = encodeURIComponent(
-      "Hello! I’d like to know more about your services."
+      "Hello Saka! I’d like to know more about your services."
     );
 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
@@ -104,7 +104,7 @@ export default function Home() {
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-muted-foreground font-mono tracking-wider">
-                  PORTFOLIO / 2025
+                  PORTFOLIO / 2026
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
                   Fawas <span className="text-muted-foreground">Saka</span>
@@ -126,7 +126,7 @@ export default function Home() {
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     Available for work
                   </div>
-                  <div>Nigeria</div>
+                  <div>Wordwide</div>
                 </div>
               </div>
             </div>
@@ -508,8 +508,8 @@ export default function Home() {
                   },
                   {
                     name: "Twitter(X)",
-                    handle: "@Sudo_Programmer",
-                    url: "https://x.com/Sudo_Programmer",
+                    handle: "Saka_Builds",
+                    url: "https://x.com/Saka_Builds",
                   },
                   {
                     name: "Daily.dev",
@@ -546,7 +546,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="text-sm text-muted-foreground">
-                © 2025 Xprogrammer. All rights reserved.
+                © 2026 Saka_Builds. All rights reserved.
               </div>
             </div>
 

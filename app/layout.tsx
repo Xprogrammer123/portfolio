@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Analytics } from "@vercel/analytics/next"
+import { LenisProvider } from "@/components/lenis-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -14,8 +15,8 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Fawas Saka - Software Developer",
   description: "Hey God, it's me again ",
-    icons: {
-    icon: "/portfolio.gif", 
+  icons: {
+    icon: "/portfolio.gif",
   },
 };
 
@@ -27,14 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-        >
-          {children}
+        <LenisProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+          >
+            {children}
             <Analytics />
-        </ThemeProvider>
+          </ThemeProvider>
+        </LenisProvider>
       </body>
     </html>
   );
