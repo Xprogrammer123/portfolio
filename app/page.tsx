@@ -3,13 +3,34 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
+import Lenis from "@studio-freight/lenis";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("");
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Initialize Lenis
+    lenisRef.current = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenisRef.current?.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Intersection Observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,7 +47,10 @@ export default function Home() {
       if (section) observer.observe(section);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      lenisRef.current?.destroy();
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -53,11 +77,12 @@ export default function Home() {
         {["intro", "work", "projects", "thoughts", "connect"].map((section) => (
           <button
             key={section}
-            onClick={() =>
-              document
-                .getElementById(section)
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => {
+              const element = document.getElementById(section);
+              if (element && lenisRef.current) {
+                lenisRef.current.scrollTo(element);
+              }
+            }}
             className={`w-2 h-8 rounded-full transition-all duration-500 ${
               activeSection === section
                 ? "bg-foreground"
@@ -79,11 +104,12 @@ export default function Home() {
         {["intro", "work", "projects", "thoughts", "connect"].map((section) => (
           <button
             key={section}
-            onClick={() =>
-              document
-                .getElementById(section)
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => {
+              const element = document.getElementById(section);
+              if (element && lenisRef.current) {
+                lenisRef.current.scrollTo(element);
+              }
+            }}
             className={`w-8 h-2 rounded-full transition-all duration-500 ${
               activeSection === section
                 ? "bg-foreground"
@@ -262,10 +288,12 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 "
         >
           <div className="space-y-12 sm:space-y-16">
-             <div className="flex items-center gap-2">
-            <h2 className="text-3xl sm:text-4xl font-light">Recent Projects</h2>
-             <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-</div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-3xl sm:text-4xl font-light">
+                Recent Projects
+              </h2>
+              <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
             <div className="grid gap-8 sm:gap-10 lg:grid-cols-2">
               {[
                 {
@@ -288,7 +316,13 @@ export default function Home() {
                   title: "Leadforge ai",
                   description:
                     "A full-featured saas marketing tool, meetings booking , real time lead fecthing with over 55% success rate",
-                  tech: ["React", "Apollo api", "Supabase", "Cal.com","resend"],
+                  tech: [
+                    "React",
+                    "Apollo api",
+                    "Supabase",
+                    "Cal.com",
+                    "resend",
+                  ],
                   link: "https://leadforge-ai.vercel.app",
                   date: "2025",
                 },
@@ -312,7 +346,7 @@ export default function Home() {
                   title: "Kaleido",
                   description:
                     "A Landing page for a children web based learning website , waitlist page and interactive section features",
-                  tech: ["React", "Tailwind CSS" ,"framer motion"],
+                  tech: ["React", "Tailwind CSS", "framer motion"],
                   link: "https://kaleido-landing-waitlist.vercel.app",
                   date: "2024",
                 },
@@ -320,7 +354,7 @@ export default function Home() {
                   title: "Doyin Unique Stores",
                   description:
                     "A responsive ecommerce website with a full fledges admin dashboard for managing products, orders, and apayment with real-time data visualization.",
-                  tech: ["React", "Tailwind CSS" ,"firebase"],
+                  tech: ["React", "Tailwind CSS", "firebase"],
                   link: "https://doyin-unique-store.vercel.app",
                   date: "2024",
                 },
