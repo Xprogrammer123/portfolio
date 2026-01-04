@@ -10,6 +10,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("");
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   const lenisRef = useRef<Lenis | null>(null);
+   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     // Initialize Lenis
@@ -580,7 +581,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="text-sm text-muted-foreground">
-                © 2026 Saka_Builds. All rights reserved.
+                © {currentYear} Saka_Builds. All rights reserved.
               </div>
             </div>
 
