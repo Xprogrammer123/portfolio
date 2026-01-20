@@ -8,9 +8,12 @@ import Lenis from "@studio-freight/lenis";
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [titleHovered, setTitleHovered] = useState(false);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   const lenisRef = useRef<Lenis | null>(null);
-   const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     // Initialize Lenis
@@ -31,6 +34,13 @@ export default function Home() {
 
     requestAnimationFrame(raf);
 
+    // Mouse position tracking for hero effect
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
     // Intersection Observer
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,7 +51,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.3, rootMargin: "0px 0px -20% 0px" }
+      { threshold: 0.3, rootMargin: "0px 0px -20% 0px" },
     );
 
     sectionsRef.current.forEach((section) => {
@@ -51,6 +61,7 @@ export default function Home() {
     return () => {
       observer.disconnect();
       lenisRef.current?.destroy();
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -60,7 +71,7 @@ export default function Home() {
   const navWhatsapp = () => {
     const phoneNumber = "2349138983178";
     const message = encodeURIComponent(
-      "Hello Saka! I’d like to know more about your services."
+      "Hello Saka! I’d like to know more about your services.",
     );
 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
@@ -92,6 +103,34 @@ export default function Home() {
             aria-label={`Navigate to ${section}`}
           />
         ))}
+
+        <button
+          onClick={toggleTheme}
+          className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? (
+            <svg
+              className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clipRule="evenodd"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          )}
+        </button>
       </nav>
 
       <nav
@@ -125,18 +164,42 @@ export default function Home() {
         <header
           id="intro"
           ref={(el) => (sectionsRef.current[0] = el)}
-          className="min-h-screen flex items-center opacity-0"
+          className="min-h-screen flex items-center opacity-0 relative overflow-hidden"
         >
+          {/* Cursor glow effect */}
+          {titleHovered && (
+            <div
+              className="fixed pointer-events-none w-32 h-32 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl"
+              style={{
+                left: `${mousePosition.x - 64}px`,
+                top: `${mousePosition.y - 64}px`,
+              }}
+            />
+          )}
+
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-muted-foreground font-mono tracking-wider">
                   PORTFOLIO / 2026
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Fawas <span className="text-muted-foreground">Saka</span>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight transition-all duration-300 cursor-pointer group">
+                  <span className="inline-block transition-all duration-300 ">
+                    Fawas
+                  </span>{" "}
+                  <span className="inline-block transition-all duration-300 text-muted-foreground">
+                    Saka
+                  </span>
                   <br />
                 </h1>
+                <div>
+                  <span className="inline-block transition-all duration-300 text-xl">
+                    Saka
+                  </span>{" "}
+                  <span className="inline-block transition-all duration-300 text-xl text-muted-forground">
+                    Builds.
+                  </span>
+                </div>
               </div>
 
               <div className="space-y-6 max-w-md">
@@ -165,7 +228,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <div className="text-foreground">Frontend Developer</div>
-                  <div className="text-muted-foreground">@PhantomBuildHQ</div>
+                  <div className="text-muted-foreground">Nexiaspace</div>
                   <div className="text-xs text-muted-foreground">
                     2025 — Present
                   </div>
@@ -184,12 +247,22 @@ export default function Home() {
                     "Supabase",
                     "Javascript",
                   ].map((skill) => (
-                    <span
+                    <button
                       key={skill}
-                      className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
+                      onMouseEnter={() => setHoveredSkill(skill)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                      onClick={() =>
+                        setHoveredSkill(hoveredSkill === skill ? null : skill)
+                      }
+                      className={`px-3 py-1 text-xs border rounded-full transition-all duration-300 cursor-pointer
+                        ${
+                          hoveredSkill === skill
+                            ? "border-foreground bg-foreground/10 text-foreground scale-110"
+                            : "border-border hover:border-muted-foreground/50"
+                        }`}
                     >
                       {skill}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -362,9 +435,9 @@ export default function Home() {
               ].map((project, index) => (
                 <article
                   key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer relative overflow-hidden "
                 >
-                  <div className="space-y-4">
+                  <div className="relative z-10 space-y-4">
                     <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
                       <span>{project.date}</span>
                       <span>{project.tech.join(" • ")}</span>
@@ -449,9 +522,9 @@ export default function Home() {
               ].map((post, index) => (
                 <article
                   key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer relative overflow-hidden "
                 >
-                  <div className="space-y-4">
+                  <div className="relative z-10 space-y-4">
                     <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
                       <span>{post.date}</span>
                       <span>{post.readTime}</span>
@@ -586,34 +659,6 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-4">
-              <button
-                onClick={toggleTheme}
-                className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <svg
-                    className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </button>
-
               <button
                 className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
                 onClick={navWhatsapp}
